@@ -48,7 +48,7 @@ class Brick {
         const bricks = [];
         for (let c = 0; c < this.brickColumnAmount; c++) {
             bricks[c] = [];
-            for (let r = 0; r < this.brickRowCount; r++) {
+            for (let r = 0; r < this.brickRowAmount; r++) {
                 this.createBricks(bricks, c, r, this.bricks[c][r].status);
             }
         }
