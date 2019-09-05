@@ -1,89 +1,135 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="utf-8">
     <title>BOMBERMAN</title>
-    <link rel="stylesheet" href="src/stylesheets/board.css">
-    <script type="text/javascript" src="./src/avatar.js"></script>
-    <script type="text/javascript" src="./src/player.js"></script>
-    <script type="text/javascript" src="./src/items.js"></script>
-    <script type="text/javascript" src="./src/bomb.js"></script>
-    <script type="text/javascript" src="src/brick.js"></script>
-    <script type="text/javascript" src="./src/computer.js"></script>
-    <script type="text/javascript" src="./src/game.js"></script>
-    <script type="text/javascript" src="./src/main.js"></script>
-  </head>
-  <body bgcolor= #dcdcdc>
-    <section class="modal">
-      <section class="top-nav">
+    <link rel="stylesheet" href="styles/board.css">
+    <script type="text/javascript" src="scripts/avatar/avatar.js"></script>
+    <script type="text/javascript" src="scripts/avatar/player.js"></script>
+    <script type="text/javascript" src="scripts/items/items.js"></script>
+    <script type="text/javascript" src="scripts/items/key.js"></script>
+    <script type="text/javascript" src="scripts/items/doors.js"></script>
+    <script type="text/javascript" src="scripts/items/bomb.js"></script>
+    <script type="text/javascript" src="scripts/treasure.js"></script>
+    <script type="text/javascript" src="scripts/brick.js"></script>
+    <script type="text/javascript" src="scripts/avatar/computer.js"></script>
+    <script type="text/javascript" src="scripts/sound.js"></script>
+    <script type="text/javascript" src="scripts/game.js"></script>
+    <script type="text/javascript" src="scripts/main.js"></script>
+    <script type="text/javascript" src="scripts/randomWalkerArgorithm.js"></script>
+
+</head>
+
+<body bgcolor= #dcdcdc>
+
+<section class="modal">
+    <section class="top-nav">
         <h2>How to play</h2>
         <span id="close">&#10006;</span>
-      </section>
-      <section class="modal-content">
-        <p>
-          Use the arrow keys to move on the board
-        </p>
-        <p>
-          Press 'B' to place a bomb. Bomb will explode after 3 seconds
-        </p>
-      </section>
     </section>
-    <section class="modal">
-      <section class="top-nav">
+    <section class="modal-content">
+        <p>
+            Use the arrow keys to move on the board
+        </p>
+        <p>
+            Press 'B' to place a bomb. Bomb will explode after 3 seconds of delay.
+        </p>
+        <p>
+            Game has 10 levels.
+        </p>
+        <p>To win you shoul destroy all zombies and find the key, to open the door.</p>
+        <p>To drop level use button in the right-top corner of the screen.</p>
+    </section>
+</section>
+
+<section class="modal">
+    <section class="top-nav">
+        <h2>Items Description</h2>
+        <span id="closed3">&#10006;</span>
+    </section>
+    <section class="modal-content">
+        <p>
+            <img src="images/rose.png" alt="Rose Item Desc" width="30"
+                 height="30"> Rose: Instantly kills one Zombie on the map.  Drop Chance: ~1/80   Duration: permanent
+        </p>
+
+        <p>
+            <img src="images/apple.png" alt="Rose Item Desc" width="30"
+                 height="30"> Apple: Removes all trees from the the map. Drop Chance: ~1/80   Duration: permanent
+        </p>
+
+        <p>
+            <img src="images/bomb.png" alt="Rose Item Desc" width="30"
+                 height="30"> Bomb: Enlarges bomb blast radius. Drop Chance: ~3/80   Duration: 5sec<
+        </p>
+    </section>
+</section>
+
+<section class="modal">
+    <section class="top-nav">
         <h2>Stats</h2>
         <span id="closed">&#10006;</span>
-      </section>
-      <section class="modal-content">
-        <p>
-          Bricks Destroyed: <b id="bricks"></b>
-        </p>
-        <p>
-          Bombs Used: <b id="bombs"></b>
-        </p>
-        <p>
-          Moves Made: <b id="moves"></b>
-        </p>
-        <p >
-          Doesn't work now, counters types may be changed
-        </p>
-      </section>
     </section>
-    <section class="modal">
-      <section class="top-nav">
+    <section class="modal-content">
+        <p>
+            Bricks Destroyed: <b id="bricks"></b>
+        </p>
+        <p>
+            Bombs Used: <b id="bombs"></b>
+        </p>
+        <p>
+            Moves Made: <b id="moves"></b>
+        </p>
+    </section>
+</section>
+
+<section class="modal">
+    <section class="top-nav">
         <h2>Global Stats</h2>
         <span id="closed2">&#10006;</span>
-      </section>
-      <section class="modal-content">
+    </section>
+    <section class="modal-content">
         <div >
-          <p>
-            Total Number of Deaths: <b id="deaths"></b> <button id="globalStatsButton">Drop</button>
-          </p>
-          <p>
-            Doesn't work now, counters types may be changed
-          </p>
+            <p>
+                Total Number of Deaths: <b id="deaths"></b> <button class="drop">Drop</button>
+            </p>
         </div>
-      </section>
     </section>
-    <section class="modal" id="lost">
-        <section class="modal-content">
-          <h2>You lost!</h2>
-          <button class="play-again">PLAY AGAIN</button>
-        </section>
+</section>
+
+<section class="modal" id="lost">
+    <section class="modal-content-lost-won">
+        <h2>You lost!</h2>
+        <button class="play-again">PLAY AGAIN</button>
     </section>
-    <section class="modal" id="won">
-        <section class="modal-content">
-          <h2>You won!</h2>
-          <button class="play-again">PLAY AGAIN</button>
-        </section>
+</section>
+
+<section class="modal" id="won">
+    <section class="modal-content-lost-won">
+        <h2>You won!</h2>
+        <button class="play-again">NEXT LEVEL</button>
     </section>
-    <section class="top-nav1">
-      <button id="how-to">How to play</button>
-      <button id="how-to2">Stats</button>
-      <button id="how-to3">Global Stats</button>
+</section>
+
+<section class="top-nav1">
+    <button id="how-to">How to play</button>
+    <button id="how-to4">Items Description</button>
+    <button id="how-to2">Stats</button>
+    <button id="how-to3">Global Stats</button>
+</section>
+
+<section class="one-row-el">
+    <section>
+        <img src="images/key.png" id="key" alt="key picture" style="width:90px;height:90px;">
     </section>
     <section id="game-start-cover">
-      <button id="start">START</button>
+        <button id="start">START</button>
     </section>
-    <canvas id="my-canvas" width="1100" height="593"></canvas>
-  </body>
+    <canvas id="my-canvas" width="1100" height="572"></canvas>
+    <section>
+        <button class = "first-level">GoTo 1st Level</button>
+    </section>
+</section>
+
+</body>
 </html>
